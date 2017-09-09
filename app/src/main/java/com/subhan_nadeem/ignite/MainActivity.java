@@ -12,15 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.subhan_nadeem.ignite.posts.PostsFragment;
-import com.subhan_nadeem.ignite.posts.PostsViewModel;
 import com.subhan_nadeem.ignite.utilities.ActivityUtils;
-import com.subhan_nadeem.ignite.utilities.ViewModelHolder;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String POSTS_VIEWMODEL_TAG = "POSTS_VIEWMODEL_TAG";
-    private PostsViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,36 +28,7 @@ public class MainActivity extends AppCompatActivity
 
         initializeNavDrawer(toolbar);
 
-        PostsFragment fragment = findOrCreateViewFragment();
-
-        mViewModel = findOrCreateViewModel();
-
-        mViewModel = findOrCreateViewModel();
-
-        fragment.setViewModel(mViewModel);
-    }
-
-    private PostsViewModel findOrCreateViewModel() {
-        // In a configuration change we might have a ViewModel present. It's retained using the
-        // Fragment Manager.
-        @SuppressWarnings("unchecked")
-        ViewModelHolder<PostsViewModel> retainedViewModel =
-                (ViewModelHolder<PostsViewModel>) getSupportFragmentManager()
-                        .findFragmentByTag(POSTS_VIEWMODEL_TAG);
-
-        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
-            // If the model was retained, return it.
-            return retainedViewModel.getViewmodel();
-        } else {
-            // There is no ViewModel yet, create it.
-            PostsViewModel viewModel = new PostsViewModel();
-            // and bind it to this Activity's lifecycle using the Fragment Manager.
-            ActivityUtils.addFragmentToActivity(
-                    getSupportFragmentManager(),
-                    ViewModelHolder.createContainer(viewModel),
-                    POSTS_VIEWMODEL_TAG);
-            return viewModel;
-        }
+        findOrCreateViewFragment();
     }
 
     @NonNull

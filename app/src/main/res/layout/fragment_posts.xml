@@ -9,6 +9,10 @@
             type="com.subhan_nadeem.ignite.posts.PostsFragment" />
 
         <variable
+            name="isLoading"
+            type="boolean" />
+
+        <variable
             name="viewModel"
             type="com.subhan_nadeem.ignite.posts.PostsViewModel" />
 

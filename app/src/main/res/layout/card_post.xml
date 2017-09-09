@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="post"
+            type="com.subhan_nadeem.ignite.models.Post"/>
+        <variable name="callback"
+                  type="com.subhan_nadeem.ignite.posts.PostClickCallback"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/subredditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="@{`\\r\\` + post.subreddit}"
+                android:textColor="@android:color/holo_orange_dark"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="/r/test"
+                />
+
+            <TextView
+                android:id="@+id/postTitle"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/subredditText"
+                android:text="@{post.title}"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                tools:text="This is a test post title"
+                />
+
+            <TextView
+                android:id="@+id/postScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@{post.score}"
+                android:textColor="@android:color/holo_orange_dark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="1500"/>
+
+            <TextView
+                android:id="@+id/postDomain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/postTitle"
+                android:text="@{post.domain}"
+                tools:text="http://test.com"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/postTitle"
+                android:text="@{post.timeSincePosted + ` ago`}"
+                tools:text="7 hrs ago"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>
