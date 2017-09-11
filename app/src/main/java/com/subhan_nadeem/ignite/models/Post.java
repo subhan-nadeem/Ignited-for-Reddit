@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * Data model for reddit posts
  */
 
-public class Post {
+public class Post{
     @SerializedName("domain")
     @Expose
     private String domain;

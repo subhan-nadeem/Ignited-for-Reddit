@@ -9,6 +9,7 @@ import com.subhan_nadeem.ignite.R;
 import com.subhan_nadeem.ignite.databinding.CardPostBinding;
 import com.subhan_nadeem.ignite.models.Post;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
     private final PostClickCallback mCallback;
-    private List<Post> mPosts;
+    private List<Post> mPosts = Collections.emptyList();
 
     public void setPosts(final List<Post> posts) {
             mPosts = posts;

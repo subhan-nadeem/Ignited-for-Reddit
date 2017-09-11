@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View" />
-
-        <variable
-            name="view"
-            type="com.subhan_nadeem.ignite.posts.PostsFragment" />
-
-        <variable
-            name="isLoading"
-            type="boolean" />
-
         <variable
             name="viewModel"
             type="com.subhan_nadeem.ignite.posts.PostsViewModel" />
-
     </data>
 
     <LinearLayout
@@ -26,6 +16,7 @@
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:id="@+id/postsRecyclerView"
+            app:layoutManager="LinearLayoutManager"
             android:layout_height="match_parent"/>
 
     </LinearLayout>

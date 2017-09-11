@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 
 /**
  * Created by Subhan Nadeem on 2017-06-28.
- * Utilities pertaining to the functionality of MainActivity.
+ * Utilities pertaining to the functionality of fragment-managing activities.
  */
 
 public class ActivityUtils {

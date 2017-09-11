@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.subhan_nadeem.ignite.posts.PostsViewModel"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/enterSubredditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/enter_a_subreddit"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <!--Enter a subreddit layout-->
+        <LinearLayout
+            android:id="@+id/subredditEditTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:paddingTop="15sp">
+
+            <TextView
+                android:id="@+id/rPrefixText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                tools:text="/r/"/>
+
+            <EditText
+                android:id="@+id/subredditEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textSize="30sp"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/filterationKeywordsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subredditEditTextLayout"
+            android:text="@string/filteration_keywords"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dash_line"
+            android:layerType="software"
+            android:padding="40dp"
+            android:id="@+id/noKeywordsLayout"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/you_haven_t_added_any_favourite_keywords_yet"
+                android:textSize="20sp"
+                android:id="@+id/noKeywordsTextView1"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/noKeywordsTextView1"
+                android:layout_marginTop="5dp"
+                android:textSize="15sp"
+                android:text="@string/tap_the_button_to_get_started"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>
