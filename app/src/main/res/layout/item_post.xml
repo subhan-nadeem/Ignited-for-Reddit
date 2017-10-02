@@ -3,7 +3,6 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="post"
             type="com.subhan_nadeem.ignite.models.Post"/>

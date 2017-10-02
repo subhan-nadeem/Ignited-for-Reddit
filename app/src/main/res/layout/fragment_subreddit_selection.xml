@@ -1,93 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:fab="http://schemas.android.com/apk/res-auto">
 
     <data>
 
+        <import type="com.subhan_nadeem.ignite.models.Keyword"/>
+
+        <variable
+            name="view"
+            type="com.subhan_nadeem.ignite.subreddit_selection.SubredditSelectionFragment"/>
+
         <variable
             name="viewModel"
-            type="com.subhan_nadeem.ignite.posts.PostsViewModel"/>
-
+            type="com.subhan_nadeem.ignite.subreddit_selection.SubredditSelectionViewModel"/>
     </data>
 
-    <RelativeLayout
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_subreddit_selection"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/enterSubredditText"
+        <include
+            android:id="@+id/contentSubredditSelection"
+            layout="@layout/content_subreddit_selection"
+            bind:viewModel="@{viewModel}"/>
+
+        <com.subhan_nadeem.ignite.helpers.MoveUpwardsFloatingMenu
+            android:id="@+id/addFabMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/enter_a_subreddit"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:layout_gravity="bottom|end"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp">
 
-        <!--Enter a subreddit layout-->
-        <LinearLayout
-            android:id="@+id/subredditEditTextLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            android:paddingTop="15sp">
-
-            <TextView
-                android:id="@+id/rPrefixText"
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/flair_fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                tools:text="/r/"/>
+                fab:fab_colorNormal="@android:color/holo_blue_dark"
+                android:onClick="@{() -> view.showNewTagDialog(Keyword.KEYWORD_TYPE_FLAIR)}"
+                android:src="@drawable/inset_ic_star"
+                fab:fab_label="Flair Tag"
+                fab:fab_size="mini"/>
 
-            <EditText
-                android:id="@+id/subredditEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textSize="30sp"
-                />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/filterationKeywordsTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/subredditEditTextLayout"
-            android:text="@string/filteration_keywords"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dash_line"
-            android:layerType="software"
-            android:padding="40dp"
-            android:id="@+id/noKeywordsLayout"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <TextView
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/post_fab"
                 android:layout_width="wrap_content"
+                fab:fab_colorNormal="@android:color/holo_orange_dark"
                 android:layout_height="wrap_content"
-                android:text="@string/you_haven_t_added_any_favourite_keywords_yet"
-                android:textSize="20sp"
-                android:id="@+id/noKeywordsTextView1"
-                android:textStyle="bold"/>
+                android:onClick="@{() -> view.showNewTagDialog(Keyword.KEYWORD_TYPE_POST)}"
+                android:src="@drawable/inset_ic_text_fields"
+                fab:fab_label="Post Tag"
+                fab:fab_size="mini"/>
+        </com.subhan_nadeem.ignite.helpers.MoveUpwardsFloatingMenu>
+    </android.support.design.widget.CoordinatorLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/noKeywordsTextView1"
-                android:layout_marginTop="5dp"
-                android:textSize="15sp"
-                android:text="@string/tap_the_button_to_get_started"/>
-        </RelativeLayout>
-    </RelativeLayout>
+
 </layout>

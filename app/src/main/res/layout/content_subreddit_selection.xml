@@ -1,0 +1,119 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.subhan_nadeem.ignite.subreddit_selection.SubredditSelectionViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/enterSubredditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/enter_a_subreddit"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <!--Enter a subreddit layout-->
+        <LinearLayout
+            android:id="@+id/subredditEditTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/enterSubredditText"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/r"
+                android:textSize="30sp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.subhan_nadeem.ignite.subreddit_selection.DelayAutoCompleteTextView
+                    android:id="@+id/subredditEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoExtractUi|actionSearch"
+                    android:inputType="text"
+                    android:text="@={viewModel.subredditAddition.getValue().subredditName}"
+                    android:textSize="30sp"/>
+
+                <ProgressBar
+                    android:id="@+id/subredditEditTextProgressBar"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:visibility="gone"
+                    tools:visibility="visible"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/filterationKeywordsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subredditEditTextLayout"
+            android:text="@string/favourite_tags"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/tagsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/filterationKeywordsTextView"
+            android:visibility="@{viewModel.subredditAddition.getValue().keywords.size() == 0 ? View.GONE : View.VISIBLE}"
+            app:layoutManager="LinearLayoutManager"
+            tools:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/noKeywordsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/dash_line"
+            android:layerType="software"
+            android:padding="40dp"
+            android:visibility="@{viewModel.subredditAddition.getValue().keywords.size() == 0 ? View.VISIBLE : View.GONE}">
+
+            <TextView
+                android:id="@+id/noKeywordsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/you_haven_t_added_any_favourite_tags_yet"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/noKeywordsTextView"
+                android:layout_marginTop="5dp"
+                android:text="@string/tap_the_button_to_get_started"
+                android:textSize="15sp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

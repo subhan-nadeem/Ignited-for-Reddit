@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="tag"
+            type="com.subhan_nadeem.ignite.models.Keyword"/>
+    </data>
+
+
+    <com.daimajia.swipe.SwipeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/star"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/inset_edit"/>
+
+            <ImageView
+                android:id="@+id/trash"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/inset_delete"/>
+        </LinearLayout>
+
+        <!-- Top layout-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@{tag.type}"
+                android:textColor="@{tag.type.equals(tag.KEYWORD_TYPE_FLAIR) ? @android:color/holo_blue_dark : @android:color/holo_orange_dark}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="Flair"
+                tools:textColor="@android:color/holo_blue_dark"/>
+
+            <TextView
+                android:id="@+id/tagContentTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@{tag.keyword}"
+                android:textSize="20sp"
+                tools:text="Fresh"/>
+
+        </LinearLayout>
+    </com.daimajia.swipe.SwipeLayout>
+</layout>
